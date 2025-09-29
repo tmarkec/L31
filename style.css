@@ -1,21 +1,37 @@
-
-body {
-    font-family: Arial, sans-serif;
+/* === Global === */
+html, body {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #F8F9FA;
+    color: #0A2239;
+    display: flex;
+    flex-direction: column;
 }
 
+h1, h2, h3, h4, h5 {
+    color: #0A2239;
+    font-weight: 600;
+}
+
+/* === Header & Navbar === */
 header {
-    background-color: #343a40;
+    background-color: #0A2239; /* Dark blue */
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.nav-brand {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #FFD166; /* Accent gold */
 }
 
 .nav-links {
@@ -32,70 +48,204 @@ header {
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    text-decoration: underline;
+    color: #FFD166; /* gold hover */
 }
 
+/* === Main Content === */
+.container {
+    flex: 1; /* main content stretches to push footer down */
+    padding: 2rem 1rem;
+}
+
+/* === Homepage Buttons === */
 .home-main {
     text-align: center;
-    padding: 3rem 1rem;
+    padding: 4rem 1.5rem;
 }
 
 .home-links {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
 }
 
 .btn {
     display: inline-block;
-    background-color: #007bff;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    margin: 0 1rem;
-    border-radius: 5px;
+    background-color: #00C2CB; /* turquoise */
+    color: #fff;
+    padding: 0.8rem 1.6rem;
+    margin: 0 1rem 1rem 0;
+    border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #009DA6; /* darker turquoise */
+    transform: translateY(-2px);
 }
 
-footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: #343a40;
-    color: white;
-    position: fixed;
+/* === KPI / Assessment Page Buttons === */
+.btn-secondary {
+    background-color: #FF6B6B; /* coral */
+    border: none;
+    color: #fff;
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    background-color: #E05555;
+}
+
+.btn-primary {
+    background-color: #00C2CB; /* turquoise */
+    border: none;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: #009DA6;
+}
+
+.btn-outline-danger {
+    border: 2px solid #FF6B6B;
+    color: #FF6B6B;
+    background-color: #fff;
+    font-weight: 600;
+}
+
+.btn-outline-danger:hover {
+    background-color: #FF6B6B;
+    color: #fff;
+}
+
+.btn-outline-info {
+    border: 2px solid #00C2CB;
+    background-color: #fff;
+    color: #00C2CB;
+    font-weight: 600;
+}
+
+.btn-outline-info:hover {
+    background-color: #00C2CB;
+    color: #fff;
+}
+
+/* === Tables === */
+/* === Tables === */
+.table-responsive {
     width: 100%;
-    bottom: 0;
+    overflow-x: auto;
 }
-
 
 table {
     width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    min-width: 700px; /* optional: ensures table has a reasonable width on small screens */
 }
 
-th, td {
-    vertical-align: top;
+thead {
+    background-color: #0A2239;
+    color: white;
 }
 
-td {
-    padding: 0.5rem;
+thead th {
+    text-align: center;
+    padding: 0.75rem;
+    font-weight: 600;
+    border: 1px solid #ddd;
 }
 
-h5 {
+tbody td {
+    padding: 0.6rem;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #F1F9FA; /* subtle light turquoise tint */
+}
+
+tbody tr td[colspan] {
+    background-color: #FFD166; /* gold highlight for assessments */
     font-weight: bold;
-    margin-bottom: 0.3rem;
+    text-align: center;
 }
 
+
+/* === Footer === */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #0A2239;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-top: auto; /* pushes footer to bottom if content is short */
+}
+
+/* === Extra spacing for buttons so footer doesn't overlap === */
 #resetBtn, #downloadBtn {
-    display: none;
+    margin-bottom: 2rem;
+}
+
+#scheduleContainer h3 {
+    background-color: #00C2CB; /* turquoise */
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    margin-top: 2rem;
+    font-size: 1.25rem;
+}
+
+/* === Assessment Tables === */
+#scheduleContainer table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    min-width: 700px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* subtle shadow for definition */
+}
+
+#scheduleContainer thead {
+    background-color: #0A2239; /* dark blue */
+    color: #fff;
+}
+
+#scheduleContainer thead th {
+    text-align: center;
+    padding: 0.75rem;
+    font-weight: 600;
+    border: 1px solid #ddd;
+}
+
+#scheduleContainer tbody td {
+    padding: 0.6rem;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+#scheduleContainer tbody tr:nth-child(even) {
+    background-color: #F1F9FA; /* subtle turquoise tint for alternate rows */
+}
+
+/* === Assessment Table Footer/Highlight Rows (if used) === */
+#scheduleContainer tbody tr td[colspan] {
+    background-color: #FFD166; /* gold highlight */
+    font-weight: bold;
+    text-align: center;
 }
 
 
-#scheduleContainer { margin-top: 20px; }
-#resetBtn, #downloadBtn { display: none; margin-right: 10px; }
-table th, table td { text-align: center; vertical-align: middle; }
+
+.module-header {
+    background-color: #0A2239!important; /* same as footer */
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    margin-top: 2rem;
+}

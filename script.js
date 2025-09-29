@@ -254,13 +254,13 @@ document.getElementById("downloadBtn").addEventListener("click", () => {
 
     // Generate PDF table below the title
     doc.autoTable({
-        head: [headers],
-        body: rows,
-        startY: 20, // leave space for module title
-        styles: { fontSize: 10, cellPadding: 3 },
-        headStyles: { fillColor: [52, 58, 64], textColor: 255 },
-        alternateRowStyles: { fillColor: [245, 245, 245] }
-    });
+    head: [headers],
+    body: rows,
+    startY: 20,
+    styles: { fontSize: 10, cellPadding: 3 },
+    headStyles: { fillColor: [10, 34, 57], textColor: 255 }, // dark blue
+    alternateRowStyles: { fillColor: [241, 249, 250] } // light turquoise tint
+});
 
     doc.save("Schedule.pdf");
 });

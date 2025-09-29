@@ -2,7 +2,7 @@
 const assessments = [
     {
         module: "Programming Implementation",
-        type: "Normal",
+        type: "Original assessment",
         items: [
             { name: "MCQ", week: 3, day: "Thursday", time: "18:00 - 18:30", duration: "30min" },
             { name: "Debugging Exercise", week: 3, day: "Thursday", time: "19:00 - 19:50", duration: "50min" },
@@ -12,7 +12,7 @@ const assessments = [
     },
     {
         module: "Object Oriented Programming",
-        type: "Normal",
+        type: "Original assessment",
         items: [
             { name: "Open Text Response", week: 6, day: "Thursday", time: "18:00 - 19:00", duration: "1h" },
             { name: "UML Diagram & Proof of Concept", week: 6, day: "Friday", time: "18:00 - 21:05", duration: "3h 5min" },
@@ -31,7 +31,7 @@ const assessments = [
     },
     {
         module: "Software Testing",
-        type: "Normal",
+        type: "Original assessment",
         items: [
             { name: "MCQ", week: 10, day: "Thursday", time: "18:00 - 18:30", duration: "30min" },
             { name: "Software Testing Process", week: 10, day: "Friday", time: "18:00 - 20:10", duration: "2h 10min" },
@@ -49,7 +49,7 @@ const assessments = [
     },
     {
         module: "JavaScript",
-        type: "Normal",
+        type: "Original assessment",
         items: [
             { name: "MCQ", week: 14, day: "Friday", time: "18:00 - 18:30", duration: "30min" },
             { name: "Project", week: 14, day: "Wednesday-Friday", time: "13:00 - 21:30", duration: "6h approx" },
@@ -67,7 +67,7 @@ const assessments = [
     },
     {
         module: "Project Management",
-        type: "Normal",
+        type: "Original assessment",
         items: [
             { name: "MCQ", week: 18, day: "Wednesday", time: "18:00 - 18:35", duration: "35min" },
             { name: "Project Implementation Document", week: 18, day: "Thursday", time: "18:00 - 21:00", duration: "2h 30min" },
@@ -77,7 +77,7 @@ const assessments = [
     },
     {
         module: "Maths for Computing",
-        type: "Normal",
+        type: "Original assessment",
         items: [
             { name: "MCQ", week: 21, day: "Thursday", time: "18:00 - 21:00", duration: "3h" },
             { name: "Viva", week: 21, day: "Friday", time: "18:00 - 18:30", duration: "30min" }
@@ -85,7 +85,7 @@ const assessments = [
     },
     {
         module: "Robot Technology",
-        type: "Normal",
+        type: "Original assessment",
         items: [
             { name: "MCQ", week: 24, day: "Thursday", time: "18:00 - 18:25", duration: "25min" },
             { name: "Longform", week: 24, day: "Friday", time: "18:00 - 21:10", duration: "3h 10min" },
@@ -197,6 +197,13 @@ const assessments = [
 // Map day names to JS day numbers
 const dayMap = { "Sunday":0, "Monday":1, "Tuesday":2, "Wednesday":3, "Thursday":4, "Friday":5, "Saturday":6 };
 
+const resetBtn = document.getElementById("resetBtn");
+const downloadBtn = document.getElementById("downloadBtn");
+
+// Initially hide buttons
+resetBtn.style.display = "none";
+downloadBtn.style.display = "none";
+
 // Format date nicely
 function formatDate(date) {
     const options = { weekday: 'short', year: 'numeric', month: 'short', day: '2-digit' };
@@ -212,7 +219,6 @@ function getAssessmentDate(startDate, weekNumber, dayName) {
     date.setDate(date.getDate() + diff);
     return date;
 }
-
 // === Generate Schedule ===
 document.getElementById("generateBtn").addEventListener("click", () => {
     const startDateValue = document.getElementById("startDate").value;
@@ -222,30 +228,33 @@ document.getElementById("generateBtn").addEventListener("click", () => {
     const scheduleContainer = document.getElementById("scheduleContainer");
     scheduleContainer.innerHTML = "";
 
-    const table = document.createElement("table");
-    table.className = "table table-bordered table-striped";
-    table.innerHTML = `
-        <thead>
-            <tr>
-                <th>Module</th>
-                <th>Type</th>
-                <th>Assessment</th>
-                <th>Week</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Duration</th>
-            </tr>
-        </thead>
-    `;
-    const tbody = document.createElement("tbody");
-
     assessments.forEach(module => {
+        // Module header
+        const moduleHeader = document.createElement("h3");
+        moduleHeader.className = "module-header";
+        moduleHeader.textContent = `${module.module} (${module.type})`;
+        scheduleContainer.appendChild(moduleHeader);
+
+        // Table per module
+        const table = document.createElement("table");
+        table.className = "table table-bordered table-striped mb-5";
+        table.innerHTML = `
+            <thead>
+                <tr>
+                    <th>Assessment</th>
+                    <th>Week</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+        `;
+        const tbody = document.createElement("tbody");
+
         module.items.forEach(item => {
             const row = document.createElement("tr");
             const assessmentDate = getAssessmentDate(startDate, item.week, item.day);
             row.innerHTML = `
-                <td>${module.module}</td>
-                <td>${module.type}</td>
                 <td>${item.name}</td>
                 <td>${item.week}</td>
                 <td>${formatDate(assessmentDate)}</td>
@@ -254,48 +263,62 @@ document.getElementById("generateBtn").addEventListener("click", () => {
             `;
             tbody.appendChild(row);
         });
-    });
 
-    table.appendChild(tbody);
-    scheduleContainer.appendChild(table);
+        table.appendChild(tbody);
+        scheduleContainer.appendChild(table);
+
+    });
 
     document.getElementById("resetBtn").style.display = "inline-block";
     document.getElementById("downloadBtn").style.display = "inline-block";
 });
 
-// === Reset ===
-document.getElementById("resetBtn").addEventListener("click", () => {
-    document.getElementById("scheduleContainer").innerHTML = "";
-    document.getElementById("startDate").value = "";
-    document.getElementById("resetBtn").style.display = "none";
-    document.getElementById("downloadBtn").style.display = "none";
-});
-
 // === Download PDF ===
 document.getElementById("downloadBtn").addEventListener("click", () => {
-    const table = document.querySelector("#scheduleContainer table");
-    if (!table) { alert("No schedule to download!"); return; }
+    if (!document.querySelector("#scheduleContainer h3")) {
+        alert("No schedule to download!"); 
+        return;
+    }
 
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    const headers = [];
-    table.querySelectorAll("thead th").forEach(th => headers.push(th.textContent));
+    let currentY = 20;
 
-    const rows = [];
-    table.querySelectorAll("tbody tr").forEach(tr => {
-        const row = [];
-        tr.querySelectorAll("td").forEach(td => row.push(td.textContent));
-        rows.push(row);
-    });
+    assessments.forEach(module => {
+        // Module title
+        doc.setFontSize(12);
+        doc.setFont("helvetica", "bold");
+        doc.text(`${module.module} (${module.type})`, 14, currentY);
 
-    doc.autoTable({
-        head: [headers],
-        body: rows,
-        startY: 20,
-        styles: { fontSize: 9, cellPadding: 2 },
-        headStyles: { fillColor: [52, 58, 64], textColor: 255 },
-        alternateRowStyles: { fillColor: [245, 245, 245] }
+        // Build rows for this module
+        const rows = module.items.map(item => {
+            const assessmentDate = getAssessmentDate(
+                new Date(document.getElementById("startDate").value),
+                item.week, 
+                item.day
+            );
+            return [
+                item.name,
+                item.week,
+                formatDate(assessmentDate),
+                item.time,
+                item.duration
+            ];
+        });
+
+        // Add table
+        doc.autoTable({
+            head: [["Assessment", "Week", "Date", "Time", "Duration"]],
+            body: rows,
+            startY: currentY + 6,
+            styles: { fontSize: 9, cellPadding: 2 },
+            headStyles: { fillColor: [52, 58, 64], textColor: 255 },
+            alternateRowStyles: { fillColor: [245, 245, 245] }
+        });
+
+        // Update Y for next module
+        currentY = doc.lastAutoTable.finalY + 10;
     });
 
     doc.save("Assessment_Schedule.pdf");
