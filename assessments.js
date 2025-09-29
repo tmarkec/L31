@@ -5,8 +5,8 @@ const assessments = [
         type: "Original assessment",
         items: [
             { name: "MCQ", week: 3, day: "Thursday", time: "18:00 - 18:30", duration: "30min" },
-            { name: "Debugging Exercise", week: 3, day: "Thursday", time: "19:00 - 19:50", duration: "50min" },
-            { name: "Fizzbuzz Exercise", week: 3, day: "Friday", time: "18:00 - 19:35", duration: "1h 35min" },
+            { name: "Longform pt1", week: 3, day: "Thursday", time: "19:00 - 19:50", duration: "50min" },
+            { name: "Longform pt2", week: 3, day: "Friday", time: "18:00 - 19:35", duration: "1h 35min" },
             { name: "Viva", week: 3, day: "Friday", time: "19:35 - 20:05", duration: "30min" }
         ]
     },
@@ -14,18 +14,18 @@ const assessments = [
         module: "Object Oriented Programming",
         type: "Original assessment",
         items: [
-            { name: "Open Text Response", week: 6, day: "Thursday", time: "18:00 - 19:00", duration: "1h" },
-            { name: "UML Diagram & Proof of Concept", week: 6, day: "Friday", time: "18:00 - 21:05", duration: "3h 5min" },
+            { name: "Longform pt1", week: 6, day: "Thursday", time: "18:00 - 19:00", duration: "1h" },
+            { name: "Longform pt2", week: 6, day: "Friday", time: "18:00 - 21:05", duration: "3h 5min" },
             { name: "Viva", week: 6, day: "Friday", time: "21:05 - 21:35", duration: "30min" }
         ]
     },
     {
         module: "Programming Implementation",
-        type: "RESIT 1",
+        type: "Resit 1",
         items: [
             { name: "MCQ", week: 7, day: "Thursday", time: "18:00 - 18:30", duration: "30min" },
-            { name: "Debugging Exercise", week: 7, day: "Thursday", time: "19:00 - 19:50", duration: "50min" },
-            { name: "Fizzbuzz Exercise", week: 7, day: "Friday", time: "18:00 - 19:35", duration: "1h 35min" },
+            { name: "Longform pt1", week: 7, day: "Thursday", time: "19:00 - 19:50", duration: "50min" },
+            { name: "Longform pt2", week: 7, day: "Friday", time: "18:00 - 19:35", duration: "1h 35min" },
             { name: "Viva", week: 7, day: "Friday", time: "19:35 - 20:05", duration: "30min" }
         ]
     },
@@ -34,16 +34,16 @@ const assessments = [
         type: "Original assessment",
         items: [
             { name: "MCQ", week: 10, day: "Thursday", time: "18:00 - 18:30", duration: "30min" },
-            { name: "Software Testing Process", week: 10, day: "Friday", time: "18:00 - 20:10", duration: "2h 10min" },
+            { name: "Longform pt1", week: 10, day: "Friday", time: "18:00 - 20:10", duration: "2h 10min" },
             { name: "Viva", week: 10, day: "Friday", time: "20:10 - 20:40", duration: "30min" }
         ]
     },
     {
         module: "Object Oriented Programming",
-        type: "RESIT 1",
+        type: "Resit 1",
         items: [
-            { name: "Open Text Response", week: 11, day: "Thursday", time: "18:00 - 19:00", duration: "1h" },
-            { name: "UML Diagram & Proof of Concept", week: 11, day: "Friday", time: "18:00 - 21:05", duration: "3h 5min" },
+            { name: "Longform pt1", week: 11, day: "Thursday", time: "18:00 - 19:00", duration: "1h" },
+            { name: "Longform pt2", week: 11, day: "Friday", time: "18:00 - 21:05", duration: "3h 5min" },
             { name: "Viva", week: 11, day: "Friday", time: "21:05 - 21:35", duration: "30min" }
         ]
     },
@@ -52,16 +52,16 @@ const assessments = [
         type: "Original assessment",
         items: [
             { name: "MCQ", week: 14, day: "Friday", time: "18:00 - 18:30", duration: "30min" },
-            { name: "Project", week: 14, day: "Wednesday-Friday", time: "13:00 - 21:30", duration: "6h approx" },
+            { name: "Project work", week: 14, day: "Wednesday-Friday", time: "13:00 - 21:30", duration: "6h approx" },
             { name: "Viva", week: 14, day: "Friday", time: "18:30 - 19:00", duration: "30min" }
         ]
     },
     {
         module: "Software Testing",
-        type: "RESIT 1",
+        type: "Resit 1",
         items: [
             { name: "MCQ", week: 15, day: "Thursday", time: "18:00 - 18:30", duration: "30min" },
-            { name: "Software Testing Process", week: 15, day: "Friday", time: "18:00 - 20:10", duration: "2h 10min" },
+            { name: "Longform pt1", week: 15, day: "Friday", time: "18:00 - 20:10", duration: "2h 10min" },
             { name: "Viva", week: 15, day: "Friday", time: "20:10 - 20:40", duration: "30min" }
         ]
     },
@@ -70,8 +70,8 @@ const assessments = [
         type: "Original assessment",
         items: [
             { name: "MCQ", week: 18, day: "Wednesday", time: "18:00 - 18:35", duration: "35min" },
-            { name: "Project Implementation Document", week: 18, day: "Thursday", time: "18:00 - 21:00", duration: "2h 30min" },
-            { name: "Project Execution Phase Task", week: 18, day: "Friday", time: "18:00 - 19:30", duration: "1h 30min" },
+            { name: "Longform pt1", week: 18, day: "Thursday", time: "18:00 - 21:00", duration: "2h 30min" },
+            { name: "Longform pt2", week: 18, day: "Friday", time: "18:00 - 19:30", duration: "1h 30min" },
             { name: "Viva", week: 18, day: "Friday", time: "19:30 - 20:00", duration: "30min" }
         ]
     },
@@ -94,45 +94,45 @@ const assessments = [
     },
     {
         module: "Programming Implementation",
-        type: "RESIT 2",
+        type: "Resit 2",
         items: [
             { name: "MCQ", week: 25, day: "Monday", time: "18:00 - 18:30", duration: "30min" },
-            { name: "Debugging Exercise", week: 25, day: "Monday", time: "19:00 - 19:50", duration: "50min" },
-            { name: "Fizzbuzz Exercise", week: 25, day: "Tuesday", time: "18:00 - 19:35", duration: "1h 35min" },
+            { name: "Longform pt1", week: 25, day: "Monday", time: "19:00 - 19:50", duration: "50min" },
+            { name: "Longform pt2", week: 25, day: "Tuesday", time: "18:00 - 19:35", duration: "1h 35min" },
             { name: "Viva", week: 25, day: "Tuesday", time: "19:35 - 20:05", duration: "30min" }
         ]
     },
     {
         module: "Software Testing",
-        type: "RESIT 2",
+        type: "Resit 2",
         items: [
             { name: "MCQ", week: 25, day: "Wednesday", time: "18:00 - 18:30", duration: "30min" },
-            { name: "Software Testing Process", week: 25, day: "Thursday", time: "18:00 - 20:10", duration: "2h 10min" },
+            { name: "Longform pt1", week: 25, day: "Thursday", time: "18:00 - 20:10", duration: "2h 10min" },
             { name: "Viva", week: 25, day: "Thursday", time: "20:10 - 20:40", duration: "30min" }
         ]
     },
     {
         module: "Project Management",
-        type: "RESIT 1",
+        type: "Resit 1",
         items: [
             { name: "MCQ", week: 26, day: "Monday", time: "18:00 - 18:35", duration: "35min" },
-            { name: "Project Implementation Document", week: 26, day: "Tuesday", time: "18:00 - 21:00", duration: "2h 30min" },
-            { name: "Project Execution Phase Task", week: 26, day: "Wednesday", time: "18:00 - 19:30", duration: "1h 30min" },
+            { name: "Longform pt1", week: 26, day: "Tuesday", time: "18:00 - 21:00", duration: "2h 30min" },
+            { name: "Longform pt2", week: 26, day: "Wednesday", time: "18:00 - 19:30", duration: "1h 30min" },
             { name: "Viva", week: 26, day: "Wednesday", time: "19:30 - 20:00", duration: "30min" }
         ]
     },
     {
         module: "JavaScript",
-        type: "RESIT 1",
+        type: "Resit 1",
         items: [
             { name: "MCQ", week: 26, day: "Friday", time: "18:00 - 18:30", duration: "30min" },
-            { name: "Project", week: 26, day: "Wednesday-Friday", time: "13:00 - 21:30", duration: "6h approx" },
+            { name: "Project work", week: 26, day: "Wednesday-Friday", time: "13:00 - 21:30", duration: "6h approx" },
             { name: "Viva", week: 26, day: "Friday", time: "18:30 - 19:00", duration: "30min" }
         ]
     },
     {
         module: "Robot Technology",
-        type: "RESIT 1",
+        type: "Resit 1",
         items: [
             { name: "MCQ", week: 27, day: "Monday", time: "18:00 - 18:25", duration: "25min" },
             { name: "Longform", week: 27, day: "Tuesday", time: "18:00 - 21:10", duration: "3h 10min" },
@@ -141,7 +141,7 @@ const assessments = [
     },
     {
         module: "Maths for Computing",
-        type: "RESIT 1",
+        type: "Resit 1",
         items: [
             { name: "MCQ", week: 27, day: "Thursday", time: "18:00 - 21:00", duration: "3h" },
             { name: "Viva", week: 27, day: "Friday", time: "18:00 - 18:30", duration: "30min" }
@@ -149,26 +149,26 @@ const assessments = [
     },
     {
         module: "Project Management",
-        type: "RESIT 2",
+        type: "Resit 2",
         items: [
             { name: "MCQ", week: 28, day: "Monday", time: "18:00 - 18:35", duration: "35min" },
-            { name: "Project Implementation Document", week: 28, day: "Tuesday", time: "18:00 - 21:00", duration: "2h 30min" },
-            { name: "Project Execution Phase Task", week: 28, day: "Wednesday", time: "18:00 - 19:30", duration: "1h 30min" },
+            { name: "Longform pt1", week: 28, day: "Tuesday", time: "18:00 - 21:00", duration: "2h 30min" },
+            { name: "Longform pt2", week: 28, day: "Wednesday", time: "18:00 - 19:30", duration: "1h 30min" },
             { name: "Viva", week: 28, day: "Wednesday", time: "19:30 - 20:00", duration: "30min" }
         ]
     },
     {
         module: "Object Oriented Programming",
-        type: "RESIT 2",
+        type: "Resit 2",
         items: [
             { name: "Open Text Response", week: 28, day: "Thursday", time: "18:00 - 19:00", duration: "1h" },
-            { name: "UML Diagram & Proof of Concept", week: 28, day: "Friday", time: "18:00 - 21:05", duration: "3h 5min" },
+            { name: "Longform pt1", week: 28, day: "Friday", time: "18:00 - 21:05", duration: "3h 5min" },
             { name: "Viva", week: 28, day: "Friday", time: "21:05 - 21:35", duration: "30min" }
         ]
     },
     {
         module: "Maths for Computing",
-        type: "RESIT 2",
+        type: "Resit 2",
         items: [
             { name: "MCQ", week: 29, day: "Monday", time: "18:00 - 21:00", duration: "3h" },
             { name: "Viva", week: 29, day: "Monday", time: "21:00 - 21:30", duration: "30min" }
@@ -176,16 +176,16 @@ const assessments = [
     },
     {
         module: "JavaScript",
-        type: "RESIT 2",
+        type: "Resit 2",
         items: [
             { name: "MCQ", week: 29, day: "Monday", time: "18:00 - 18:30", duration: "30min" },
-            { name: "Project", week: 29, day: "Monday-Wednesday", time: "13:00 - 21:30", duration: "6h approx" },
+            { name: "Project work", week: 29, day: "Monday-Wednesday", time: "13:00 - 21:30", duration: "6h approx" },
             { name: "Viva", week: 29, day: "Wednesday", time: "18:30 - 19:00", duration: "30min" }
         ]
     },
     {
         module: "Robot Technology",
-        type: "RESIT 2",
+        type: "Resit 2",
         items: [
             { name: "MCQ", week: 29, day: "Thursday", time: "18:00 - 18:25", duration: "25min" },
             { name: "Longform", week: 29, day: "Friday", time: "18:00 - 21:10", duration: "3h 10min" },
@@ -273,6 +273,19 @@ document.getElementById("generateBtn").addEventListener("click", () => {
     document.getElementById("downloadBtn").style.display = "inline-block";
 });
 
+document.getElementById("resetBtn").addEventListener("click", () => {
+    const scheduleContainer = document.getElementById("scheduleContainer");
+
+    // Clear schedule table
+    scheduleContainer.innerHTML = "";
+
+    // Clear date picker
+    document.getElementById("startDate").value = "";
+
+    // Hide buttons again
+    resetBtn.style.display = "none";
+    downloadBtn.style.display = "none";
+});
 // === Download PDF ===
 document.getElementById("downloadBtn").addEventListener("click", () => {
     if (!document.querySelector("#scheduleContainer h3")) {
