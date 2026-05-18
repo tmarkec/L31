@@ -33,10 +33,13 @@ const modules = {
   "Software Testing": [
     { section: "Introduction to software testing", topics: ["Software testing overview"] },
     { section: "Software testing life cycle", topics: ["Software testing life cycle"] },
-    { section: "Test strategies", topics: ["Testing visibility", "Testing approach"] },
+    { section: "Test strategies", topics: ["Testing visibility",] },
+    { section: "Test strategies", topics: ["Testing approach",] },
     { section: "The testing process", topics: ["Project introduction", "The testing approach", "Building a simple test suite in Python"] },
+    { section: "The testing process", topics: ["Building a simple test suite in Python - continue"] },
     { section: "Beyond basic tests", topics: ["Test driven development"] },
-    { section: "Conclusion", topics: ["Conclusion"] }
+    { section: "Conclusion", topics: ["Conclusion"] },
+    { section: "Rubric", topics: ["Practice resources"] }
   ],
 
   "Programming with JavaScript": [
