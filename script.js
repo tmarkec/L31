@@ -43,7 +43,7 @@ const modules = {
 
   "Programming with JavaScript": [
     { section: "Welcome", topics: ["Introduction to JavaScript"] },
-    { section: "Working with pure JavaScript", topics: ["JavaScript data types","JavaScript Variables", "Control flow & operators", "JavaScript functions", "JavaScript functions] },
+    { section: "Working with pure JavaScript", topics: ["JavaScript data types","JavaScript Variables", "Control flow & operators", "JavaScript functions", "JavaScript functions"] },
     { section: "JavaScript and the web", topics: ["Introduction to HTML & CSS", "Manipulating a webpage with JavaScript", "Manipulating a webpage with JavaScript"] },
     { section: "Handling user interactions with JavaScript", topics: ["Event handlers pt1", "Event handlers pt2", "Forms and JavaScript"] }
   ],
