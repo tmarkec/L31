@@ -160,16 +160,33 @@ function formatDate(date) {
 }
 
 // Calculate date of assessment
+// Calculate date of assessment dynamically (accounting for holidays)
 function getAssessmentDate(startDate, weekNumber, dayName) {
     let date = new Date(startDate);
-    date.setDate(date.getDate() + (weekNumber - 1) * 7);
+    let currentWeek = 1;
+
+    // Step through week by week to check for the Christmas break
+    while (currentWeek < weekNumber) {
+        date.setDate(date.getDate() + 7);
+        
+        // CHRISTMAS BREAK LOGIC:
+        // In JavaScript Dates, getMonth() is 0-indexed (11 = December).
+        // If a scheduled week starts between Dec 20 and Dec 31, we trigger the break.
+        if (date.getMonth() === 11 && date.getDate() >= 20) {
+            // Add 14 days (2 weeks) to skip the Christmas/New Year period
+            date.setDate(date.getDate() + 14);
+        }
+        currentWeek++;
+    }
     
     // Handle date ranges like "Wednesday-Friday" - extract the first day
     const singleDay = dayName.includes('-') ? dayName.split('-')[0].trim() : dayName;
     
+    // Adjust the date to land on the specific target day of the week
     const targetDay = dayMap[singleDay];
     const diff = (targetDay + 7 - date.getDay()) % 7;
     date.setDate(date.getDate() + diff);
+    
     return date;
 }
 
