@@ -149,9 +149,9 @@ const dayMap = { "Sunday":0, "Monday":1, "Tuesday":2, "Wednesday":3, "Thursday":
 const resetBtn = document.getElementById("resetBtn");
 const downloadBtn = document.getElementById("downloadBtn");
 
-// Initially hide buttons
-resetBtn.style.display = "none";
-downloadBtn.style.display = "none";
+// Initially hide buttons safely
+if (resetBtn) resetBtn.style.display = "none";
+if (downloadBtn) downloadBtn.style.display = "none";
 
 // Format date nicely
 function formatDate(date) {
@@ -159,35 +159,41 @@ function formatDate(date) {
     return date.toLocaleDateString('en-US', options);
 }
 
-// Calculate date of assessment
-// Calculate date of assessment dynamically (accounting for holidays)
-function getAssessmentDate(startDate, weekNumber, dayName) {
-    let date = new Date(startDate);
+// Calculate date of assessment dynamically (accounting for holidays and timezones)
+function getAssessmentDate(startDateValue, weekNumber, dayName) {
+    // 1. Bypass timezone bugs by explicitly splitting the local date string components
+    const [year, month, day] = startDateValue.split('-');
+    let current = new Date(year, month - 1, day);
     let currentWeek = 1;
 
-    // Step through week by week to check for the Christmas break
+    // 2. Step through week by week to check for the Christmas break
     while (currentWeek < weekNumber) {
-        date.setDate(date.getDate() + 7);
+        current.setDate(current.getDate() + 7);
         
         // CHRISTMAS BREAK LOGIC:
-        // In JavaScript Dates, getMonth() is 0-indexed (11 = December).
-        // If a scheduled week starts between Dec 20 and Dec 31, we trigger the break.
-        if (date.getMonth() === 11 && date.getDate() >= 20) {
-            // Add 14 days (2 weeks) to skip the Christmas/New Year period
-            date.setDate(date.getDate() + 14);
+        // If a teaching week begins between Dec 18 and Dec 31, it intersects the holidays.
+        // We pause the schedule by adding 14 days (2 weeks).
+        if (current.getMonth() === 11 && current.getDate() >= 18) {
+            current.setDate(current.getDate() + 14);
         }
         currentWeek++;
     }
     
-    // Handle date ranges like "Wednesday-Friday" - extract the first day
+    // 3. Find the right day of the week
     const singleDay = dayName.includes('-') ? dayName.split('-')[0].trim() : dayName;
+    const targetDayOfWeek = dayMap[singleDay];
     
-    // Adjust the date to land on the specific target day of the week
-    const targetDay = dayMap[singleDay];
-    const diff = (targetDay + 7 - date.getDay()) % 7;
-    date.setDate(date.getDate() + diff);
+    // Determine what day of the week the cohort started on
+    const startDayOfWeek = new Date(year, month - 1, day).getDay();
     
-    return date;
+    let dayOffset = targetDayOfWeek - startDayOfWeek;
+    // If the target day is earlier in the week than the start day, push it to the correct day of THAT cohort week
+    if (dayOffset < 0) {
+        dayOffset += 7;
+    }
+    
+    current.setDate(current.getDate() + dayOffset);
+    return current;
 }
 
 // === Generate Schedule ===
@@ -195,7 +201,6 @@ document.getElementById("generateBtn").addEventListener("click", () => {
     const startDateValue = document.getElementById("startDate").value;
     if (!startDateValue) { alert("Please select a cohort start date!"); return; }
 
-    const startDate = new Date(startDateValue);
     const scheduleContainer = document.getElementById("scheduleContainer");
     scheduleContainer.innerHTML = "";
 
@@ -224,7 +229,8 @@ document.getElementById("generateBtn").addEventListener("click", () => {
 
         module.items.forEach(item => {
             const row = document.createElement("tr");
-            const assessmentDate = getAssessmentDate(startDate, item.week, item.day);
+            // Important: We now pass the string directly, not a Date object
+            const assessmentDate = getAssessmentDate(startDateValue, item.week, item.day);
             row.innerHTML = `
                 <td>${item.name}</td>
                 <td>${item.week}</td>
@@ -237,25 +243,19 @@ document.getElementById("generateBtn").addEventListener("click", () => {
 
         table.appendChild(tbody);
         scheduleContainer.appendChild(table);
-
     });
 
-    document.getElementById("resetBtn").style.display = "inline-block";
-    document.getElementById("downloadBtn").style.display = "inline-block";
+    if (resetBtn) resetBtn.style.display = "inline-block";
+    if (downloadBtn) downloadBtn.style.display = "inline-block";
 });
 
+// === Reset Button ===
 document.getElementById("resetBtn").addEventListener("click", () => {
     const scheduleContainer = document.getElementById("scheduleContainer");
-
-    // Clear schedule table
     scheduleContainer.innerHTML = "";
-
-    // Clear date picker
     document.getElementById("startDate").value = "";
-
-    // Hide buttons again
-    resetBtn.style.display = "none";
-    downloadBtn.style.display = "none";
+    if (resetBtn) resetBtn.style.display = "none";
+    if (downloadBtn) downloadBtn.style.display = "none";
 });
 
 // === Download PDF ===
@@ -267,8 +267,8 @@ document.getElementById("downloadBtn").addEventListener("click", () => {
 
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
-
     let currentY = 20;
+    const startDateValue = document.getElementById("startDate").value;
 
     assessments.forEach(module => {
         // Module title
@@ -278,11 +278,8 @@ document.getElementById("downloadBtn").addEventListener("click", () => {
 
         // Build rows for this module
         const rows = module.items.map(item => {
-            const assessmentDate = getAssessmentDate(
-                new Date(document.getElementById("startDate").value),
-                item.week, 
-                item.day
-            );
+            // Important: We now pass the string directly, not a Date object
+            const assessmentDate = getAssessmentDate(startDateValue, item.week, item.day);
             return [
                 item.name,
                 item.week,
